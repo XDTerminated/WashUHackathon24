@@ -6,7 +6,7 @@
             "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
         },
         {
-            "src": "index.html",
+            "src": "**",
             "use": "@vercel/static"
         }
     ],
@@ -16,8 +16,20 @@
             "dest": "api/wsgi.py"
         },
         {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/css/(.*)",
+            "dest": "/css/$1"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/js/$1"
+        },
+        {
             "src": "/(.*)",
-            "dest": "/index.html"
+            "dest": "/$1"
         }
     ]
 }
